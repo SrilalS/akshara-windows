@@ -19,6 +19,8 @@ struct Values {
   bool v2RepayaZwj{};
   bool v2Classical{};
   bool v2RakaransayaU{};
+  // Off: d types ද, dh ධ, D ඩ. On: the older keyboard convention, d types ඩ and dh ද.
+  bool v2RetroflexD{};
   // Two Spaces in quick succession type ". ".
   bool doubleSpacePeriod{true};
 };
@@ -34,6 +36,7 @@ inline constexpr Item kItems[] = {
   {L"SmartPhoneticV2RepayaZwj", L"Joined repaya", L"Write repaya with a joiner, as in older text.", &Values::v2RepayaZwj},
   {L"SmartPhoneticV2Classical", L"Classical conjuncts", L"Join the classical bandi akuru pairs.", &Values::v2Classical},
   {L"SmartPhoneticV2RakaransayaU", L"Rakaransaya for ru", L"Write kru as rakaransaya with a u sign instead of the gaetta-pilla.", &Values::v2RakaransayaU},
+  {L"SmartPhoneticV2RetroflexD", L"Type ඩ with d", L"d types ඩ and dh types ද, as on older Singlish keyboards.", &Values::v2RetroflexD},
   {L"DoubleSpacePeriod", L"Double-space period", L"Two quick Spaces type a full stop and a space.", &Values::doubleSpacePeriod},
 };
 

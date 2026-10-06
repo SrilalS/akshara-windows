@@ -18,7 +18,7 @@ public sealed partial class TypingPage : Page
 
     private IEnumerable<ToggleSwitch> Toggles =>
     [
-        GrammarToggle, RakaransayaUToggle, RepayaZwjToggle, ClassicalToggle, ArchaicToggle, DoubleSpaceToggle,
+        GrammarToggle, RetroflexDToggle, RakaransayaUToggle, RepayaZwjToggle, ClassicalToggle, ArchaicToggle, DoubleSpaceToggle,
         PunctuationToggle, EnterToggle, TabToggle, CursorToggle,
     ];
 

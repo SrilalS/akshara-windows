@@ -61,6 +61,7 @@ SmartPhoneticOptions option(const std::string& name) {
   else if (name == "repaya_zwj") options.repayaZwj = true;
   else if (name == "classical") options.classical = true;
   else if (name == "rakaransaya_u") options.rakaransayaU = true;
+  else if (name == "retroflex_d") options.retroflexD = true;
   else { std::cerr << "unknown option " << name << '\n'; std::exit(1); }
   return options;
 }
@@ -153,6 +154,12 @@ int main(int argc, char** argv) {
   styled.repayaZwj = true;
   expect("kruura (rakaransaya_u)", v2("kruura", styled), "ක්" + z + "රූර");
   expect("karma (repaya_zwj)", v2("karma", styled), "කර්" + z + "ම");
+  SmartPhoneticOptions singlish;
+  singlish.retroflexD = true;
+  expect("bada (retroflex_d)", v2("bada", singlish), "බඩ");
+  expect("kohomadha (retroflex_d)", v2("kohomadha", singlish), "කොහොමද");
+  expect("Dharmaya (retroflex_d)", v2("Dharmaya", singlish), "ධර්මය");
+  expect("da (default)", v2("da"), "ද");
   const auto first = [&](const std::string& roman) {
     const auto all = lexicon->candidates(fromUtf8(roman));
     return all.empty() ? std::string() : toUtf8(all.front());

@@ -22,12 +22,13 @@ public static class SettingsStore
     public static readonly Setting V2RepayaZwj = new("SmartPhoneticV2RepayaZwj", false);
     public static readonly Setting V2Classical = new("SmartPhoneticV2Classical", false);
     public static readonly Setting V2RakaransayaU = new("SmartPhoneticV2RakaransayaU", false);
+    public static readonly Setting V2RetroflexD = new("SmartPhoneticV2RetroflexD", false);
     public static readonly Setting DoubleSpacePeriod = new("DoubleSpacePeriod", true);
 
     public static readonly Setting[] All =
     [
         CommitOnPunctuation, CommitOnEnter, CommitOnTab, CommitOnCursorMovement, SmartPhoneticV2,
-        V2Archaic, V2RepayaZwj, V2Classical, V2RakaransayaU, DoubleSpacePeriod,
+        V2Archaic, V2RepayaZwj, V2Classical, V2RakaransayaU, V2RetroflexD, DoubleSpacePeriod,
     ];
 
     public static bool Get(Setting setting)

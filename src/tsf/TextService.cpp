@@ -532,7 +532,8 @@ std::u16string TextService::Render() const {
 }
 void TextService::LoadPreferences() {
   preferences_ = akshara::preferences::Load();
-  smart_.options = {preferences_.v2Archaic, preferences_.v2RepayaZwj, preferences_.v2Classical, preferences_.v2RakaransayaU};
+  smart_.options = {preferences_.v2Archaic, preferences_.v2RepayaZwj, preferences_.v2Classical, preferences_.v2RakaransayaU,
+                    preferences_.v2RetroflexD};
   RefreshWordList();
 }
 void TextService::RefreshWordList() {

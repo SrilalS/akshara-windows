@@ -23,6 +23,8 @@ struct SmartPhoneticOptions {
   bool classical{};
   // Write C + r + u/uu as rakaransaya + ු/ූ (ක්‍රූර) instead of the usual ෘ/ෲ (කෲර) (R-06).
   bool rakaransayaU{};
+  // Write d as ඩ and dh as ද, the older keyboard convention (R-01).
+  bool retroflexD{};
 
   friend bool operator==(const SmartPhoneticOptions&, const SmartPhoneticOptions&) = default;
 };

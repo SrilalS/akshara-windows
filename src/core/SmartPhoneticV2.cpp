@@ -21,6 +21,16 @@ constexpr std::u32string_view kSanyaka = U"ඟඦඬඳඹ";
 constexpr std::u32string_view kNoHal = U"ඟඦඬඳඹළ";           // G-HC-06, G-HC-07
 constexpr std::u32string_view kPlainBeforeRa = U"මනල";       // R-07: දුම්රිය, හෙන්රි
 constexpr std::u32string_view kVelars = U"කඛගඝ";            // R-11
+
+// R-01 retroflexD: d ඩ · dh ද · D ඪ · Dh ධ · zd ඬ (q, dhh, zdh, zq and zD keep their letters). 0: unchanged.
+char32_t retroflexD(std::u32string_view seq) {
+  if (seq == U"d") return U'ඩ';
+  if (seq == U"dh") return U'ද';
+  if (seq == U"D") return U'ඪ';
+  if (seq == U"Dh") return U'ධ';
+  if (seq == U"zd") return U'ඬ';
+  return 0;
+}
 // C-13: ෘ / ෲ only after the consonants where the form is attested (validity.json: valid, loan or rare).
 constexpr std::u32string_view kGaettaAfterU = U"කගඝජටඩතදධනපබභමවශසහෆ";
 constexpr std::u32string_view kGaettaAfterUu = U"කගටඩතදපබම";
@@ -156,7 +166,11 @@ bool SmartPhoneticV2::isBandiPair(char32_t first, char32_t second) {
 }
 
 std::u32string SmartPhoneticV2::transliterate(std::u32string_view source, const SmartPhoneticOptions& options) {
-  const auto tokens = tokenize(source, options.archaic);
+  auto tokens = tokenize(source, options.archaic);
+  if (options.retroflexD)
+    for (auto& token : tokens)
+      if (token.kind == Kind::Consonant)
+        if (const auto letter = retroflexD(token.seq)) token.letter = letter;
   std::u32string out;
   out.reserve(tokens.size() * 2);
   auto state = State::WordStart;
